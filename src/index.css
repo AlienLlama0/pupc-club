@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { background: #120607; color: #e7f4ff; }
+body { font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+* { scrollbar-width: thin; scrollbar-color: #2b2d6e transparent; }
+
+@layer components {
+  .btn { @apply inline-flex shrink-0 whitespace-nowrap items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan/70; }
+  .btn-sm { @apply px-3 py-2 text-xs rounded-md; }
+  .btn-gradient { @apply text-white bg-gradient-to-r from-[#ff5a5f] to-[#c4142f] hover:brightness-110 hover:shadow-glow; }
+  .btn-cream { @apply bg-cream text-navy-900 hover:bg-white shadow-card; }
+  .btn-dark { @apply bg-[#2a0b10] text-white border border-[#ff4d4d]/60 hover:border-[#ff7a7a] hover:bg-[#3a0f16]; }
+  .btn-ghost { @apply text-ice/80 hover:text-white hover:bg-white/5; }
+  .btn-danger { @apply bg-ember/20 text-[#ff9a9a] border border-ember/50 hover:bg-ember/30; }
+  .card { @apply rounded-2xl border border-white/10 bg-navy-800/70 backdrop-blur shadow-card; }
+  .field { @apply w-full rounded-lg border border-white/10 bg-navy-900/80 px-3.5 py-2.5 text-sm text-ice placeholder:text-ice/30 outline-none transition focus:border-cyan/60 focus:ring-2 focus:ring-cyan/20; }
+  .label { @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ice/60; }
+  .h-display { @apply font-display font-bold tracking-tight text-ice; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.2em] text-cyan; }
+  .th { @apply px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-ice/50; }
+  .td { @apply px-4 py-3 text-sm text-ice/85 align-top; }
+}
+.text-glow { text-shadow: 0 0 30px rgba(255, 120, 110, .35), 0 2px 0 rgba(0,0,0,.4); }
+.grid-bg { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 48px 48px; }
+select.field option { background: #0f1136; }
