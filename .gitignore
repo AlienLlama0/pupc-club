@@ -1,2 +1,3 @@
-./node_modules
-**/*.Zone.Identifier
+node_modules/
+.Zone.Identifier
+**/Zone.Identifier
