@@ -1,3 +1,6 @@
 node_modules/
 **/*:Zone.Identifier
 **/Zone.Identifier
+# Local Netlify folder
+.netlify
+.env

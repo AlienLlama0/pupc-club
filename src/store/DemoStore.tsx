@@ -25,10 +25,10 @@ function safeSet(store: 'local' | 'session', key: string, value: string | null) 
 }
 
 function loadState(): DemoState {
-  const raw = safeGet('local', STATE_KEY);
-  if (raw) {
-    try { const parsed = JSON.parse(raw) as DemoState; if (parsed.version === 1) return parsed; } catch { /* fall through */ }
-  }
+  // const raw = safeGet('local', STATE_KEY);
+  // if (raw) {
+  //   try { const parsed = JSON.parse(raw) as DemoState; if (parsed.version === 1) return parsed; } catch { /* fall through */ }
+  // }
   return buildSeed();
 }
 
