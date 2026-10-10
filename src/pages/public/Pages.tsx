@@ -105,67 +105,6 @@ export function Executives() {
   );
 }
 
-export function Verify() {
-  const { state } = useDemo();
-  const [q, setQ] = useState('');
-  const [result, setResult] = useState<null | { found: false } | { found: true; id: string; name: string; dept: string; batch: string; status: 'Active' | 'Inactive'; joined: string }>(null);
-  const [loading, setLoading] = useState(false);
-  const run = (id: string) => {
-    const v = id.trim().toUpperCase();
-    setQ(v);
-    if (!v) return;
-    setLoading(true);
-    setTimeout(() => {
-      const m = state.members.find(x => x.id.toUpperCase() === v);
-      // Only approved public fields are exposed — never email, phone or student ID.
-      setResult(m ? { found: true, id: m.id, name: m.name, dept: m.department, batch: m.batch, status: m.status, joined: m.joinedAt } : { found: false });
-      setLoading(false);
-    }, 450);
-  };
-  const samples = ['PUPC-2025-014', 'PUPC-2023-007', 'PUPC-0000-000'];
-  return (
-    <>
-      <PageHero eyebrow="Member verification" title="Verify a Member ID" sub="Check whether a member ID belongs to a current club member." />
-      <section className="mx-auto max-w-2xl px-4 py-16 sm:px-8">
-        <form onSubmit={e => { e.preventDefault(); run(q); }} className="card flex flex-col gap-3 p-5 sm:flex-row">
-          <Input value={q} onChange={e => setQ(e.target.value)} placeholder="e.g. PUPC-2025-014" aria-label="Member ID" className="font-mono uppercase" />
-          <Button variant="gradient" type="submit" disabled={loading} className="sm:w-40">{loading ? 'Checking…' : 'Verify'}</Button>
-        </form>
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-ice/50">
-          Sample IDs:
-          {samples.map(s => <button key={s} onClick={() => run(s)} className="rounded-md border border-white/10 px-2 py-1 font-mono text-ice/70 hover:border-cyan/50 hover:text-cyan">{s}</button>)}
-        </div>
-        <div className="mt-8" aria-live="polite">
-          {result && !loading && (result.found ? (
-            <div className={`card animate-rise p-6 ${result.status === 'Active' ? 'border-emerald-400/30' : 'border-amber-400/30'}`}>
-              <div className="flex items-center gap-3">
-                {result.status === 'Active' ? <ShieldCheck className="h-9 w-9 text-emerald-300" /> : <ShieldAlert className="h-9 w-9 text-amber-300" />}
-                <div>
-                  <p className="font-display text-2xl font-semibold">{result.status === 'Active' ? 'Active Member' : 'Inactive Member'}</p>
-                  <p className="font-mono text-sm text-ice/50">{result.id}</p>
-                </div>
-                {result.status === 'Active' && <Badge tone="green" className="ml-auto"><BadgeCheck className="h-3.5 w-3.5" />Verified</Badge>}
-              </div>
-              <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm">
-                <div><dt className="text-ice/40">Name</dt><dd className="font-semibold">{result.name}</dd></div>
-                <div><dt className="text-ice/40">Department</dt><dd className="font-semibold">{result.dept}</dd></div>
-                <div><dt className="text-ice/40">Batch</dt><dd className="font-semibold">{result.batch}</dd></div>
-                <div><dt className="text-ice/40">Member since</dt><dd className="font-semibold">{fmtDate(result.joined)}</dd></div>
-              </dl>
-            </div>
-          ) : (
-            <div className="card animate-rise flex items-center gap-3 border-ember/30 p-6">
-              <SearchX className="h-9 w-9 text-[#ff8a8a]" />
-              <div><p className="font-display text-2xl font-semibold">Member Not Found</p><p className="text-sm text-ice/55">No member is registered with ID <span className="font-mono">{q}</span>.</p></div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8"><DemoNotice>Demo verification against sample data stored in this browser. Only public fields are shown; contact details and student IDs are never exposed.</DemoNotice></div>
-      </section>
-    </>
-  );
-}
-
 export function Contact() {
   const { state, update } = useDemo();
   const c = state.club;
