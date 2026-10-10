@@ -79,7 +79,11 @@ export default function Login() {
                   <p className="truncate text-sm font-semibold">{a.roleIds.map(roleName).join(', ') || 'No role'} <span className="font-normal text-ice/45">· {a.name}</span></p>
                   <p className="truncate font-mono text-xs text-ice/55">{a.email} · {a.password}</p>
                 </div>
-                <button onClick={() => fill(a.email, a.password!)} className="rounded-md p-2 text-ice/50 hover:bg-white/5 hover:text-cyan" aria-label={`Fill credentials for ${a.name}`}><Copy className="h-4 w-4" /></button>
+                <button onClick={() => {
+  if (a.email && a.password) {
+    fill(a.email, a.password);
+  }
+}} className="rounded-md p-2 text-ice/50 hover:bg-white/5 hover:text-cyan" aria-label={`Fill credentials for ${a.name}`}><Copy className="h-4 w-4" /></button>
                 <Button size="sm" variant="cream" onClick={() => quick(a.id)}>Enter</Button>
               </li>
             ))}

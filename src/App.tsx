@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PublicLayout from './components/PublicLayout';
 import DashboardLayout, { RequirePerm } from './components/DashboardLayout';
 import Home from './pages/public/Home';
@@ -21,7 +21,7 @@ import { Documents, Notifications, SearchResults, Settings } from './pages/dashb
 // HashRouter keeps the demo working on any static host (or a single HTML file) without server rewrites.
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route index element={<Home />} />
@@ -31,7 +31,7 @@ export default function App() {
           <Route path="events" element={<Events />} />
           <Route path="events/:id" element={<EventDetail />} />
           <Route path="verify" element={<Verify />} />
-          <Route path="contact" element={<Contact />} />
+          {/* <Route path="contact" element={<Contact />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Route>
@@ -53,6 +53,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

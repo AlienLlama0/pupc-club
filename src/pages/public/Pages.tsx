@@ -90,7 +90,8 @@ export function Executives() {
               </div>
               <h2 className="mt-4 font-display text-xl font-semibold">{e.name}</h2>
               <p className="text-sm font-semibold text-cyan">{e.designation}</p>
-              <p className="mt-1 text-xs text-ice/40">{e.department} · Batch {e.batch}</p>
+              {(e.designation !== "Moderator" && e.designation !== "Co-Moderator") && (<p className="mt-1 text-xs text-ice/40">{e.department} · Batch {e.batch}</p>)}
+              
               <p className="mt-3 text-sm leading-relaxed text-ice/60">{e.bio}</p>
             </article>
           ))}

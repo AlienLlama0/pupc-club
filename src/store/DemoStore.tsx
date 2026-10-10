@@ -79,7 +79,9 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   };
 
   const login: Ctx['login'] = (email, password, remember) => {
-    const ex = state.executives.find(e => e.email.toLowerCase() === email.trim().toLowerCase());
+    const ex = state.executives.find(
+  e => e.email?.toLowerCase() === email.trim().toLowerCase()
+);
     if (!ex || !ex.password) return { ok: false, error: 'No demo account uses that email. Try one of the demo credentials below.' };
     if (ex.password !== password) return { ok: false, error: 'Incorrect password for this demo account.' };
     setUserId(ex.id); persistSession(ex.id, remember);

@@ -20,13 +20,38 @@ function ExecForm({ open, onClose, ex }: { open: boolean; onClose: () => void; e
   const [f, setF] = useState(blank);
   const [err, setErr] = useState<Record<string, string>>({});
   const [k, setK] = useState('');
-  if (k !== `${open}${ex?.id}`) { setK(`${open}${ex?.id}`); setF(ex ? { name: ex.name, email: ex.email, designation: ex.designation, bio: ex.bio, department: ex.department, batch: ex.batch, phone: ex.phone, photo: ex.photo, showOnSite: ex.showOnSite, order: ex.order } : blank); setErr({}); }
+  if (k !== `${open}${ex?.id}`) { setK(`${open}${ex?.id}`); 
+  setF(
+  ex
+    ? {
+        name: ex.name,
+        email: ex.email ?? "",
+        designation: ex.designation,
+        bio: ex.bio ?? "",
+        department: ex.department ?? "",
+        batch: ex.batch ?? "",
+        phone: ex.phone ?? "",
+        photo: ex.photo,
+        showOnSite: ex.showOnSite,
+        order: ex.order,
+      }
+    : blank
+);
+  setErr({}); }
   const submit = (e: FormEvent) => {
     e.preventDefault();
     const er: Record<string, string> = {};
     if (f.name.trim().length < 3) er.name = 'Enter a name.';
     if (!isEmail(f.email)) er.email = 'Enter a valid email.';
-    else if (state.executives.some(x => x.email.toLowerCase() === f.email.toLowerCase() && x.id !== ex?.id)) er.email = 'Email already used.';
+    else if (
+      state.executives.some(
+        x =>
+          x.email?.toLowerCase() === f.email.toLowerCase() &&
+          x.id !== ex?.id
+      )
+    ) {
+      er.email = "Email already used.";
+    }
     if (!f.designation.trim()) er.designation = 'Add a designation.';
     setErr(er); if (Object.keys(er).length) return;
     update(d => {

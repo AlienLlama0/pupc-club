@@ -28,14 +28,15 @@ export interface Role {
 export interface Executive {
   id: string;
   name: string;
-  email: string;
-  password?: string; // DEMO ONLY — never store passwords client-side in production
+  email?: string;
+  phone?: string;
+  password?: string;
   designation: string;
-  bio: string;
+  bio?: string;
   roleIds: string[];
-  department: string;
-  batch: string;
-  phone: string;
+  department?: string;
+  batch?: string;
+  term?: string; // Add this if needed
   hue: number;
   photo?: string;
   order: number;
@@ -105,6 +106,7 @@ export interface ClubEvent {
   type: EventType;
   date: string;
   time: string;
+  image?: string;
   venue: string;
   summary: string;
   description: string;
