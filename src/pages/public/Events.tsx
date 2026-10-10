@@ -8,7 +8,7 @@ import { daysUntil, fmtDate } from '../../lib/util';
 import type { EventType } from '../../types';
 import { NotFound } from './Pages';
 
-const TYPES: (EventType | 'All')[] = ['All', 'Workshop', 'Contest', 'Hackathon', 'Seminar', 'Social'];
+const TYPES: (EventType | 'All')[] = ['All', 'Workshop', 'Contest', 'Hackathon', 'Seminar'];
 
 export function Events() {
   const { state } = useDemo();
@@ -37,7 +37,7 @@ export function Events() {
             const dd = daysUntil(e.date);
             return (
               <Link to={`/events/${e.id}`} key={e.id} className="card group overflow-hidden transition hover:-translate-y-1 hover:border-cyan/40">
-                <div className="relative h-44"><Cover hue={e.hue} type={e.type} label={e.title} />
+                <div className="relative h-44"><Cover hue={e.hue} type={e.type} label={e.title} image={e.image} />
                   <span className="absolute left-4 top-4 rounded-lg bg-navy-900/80 px-2.5 py-1 text-xs font-semibold text-ice backdrop-blur">{dd === 0 ? 'Today' : dd > 0 ? `In ${dd} days` : fmtDate(e.date)}</span>
                 </div>
                 <div className="p-5">
@@ -79,43 +79,105 @@ export function EventDetail() {
   if (!e) return <NotFound />;
   const upcoming = daysUntil(e.date) >= 0 && e.status === 'Published';
   const photos = state.gallery.filter(g => g.eventId === e.id);
+
+  const [activeDay, setActiveDay] = useState(0);
+
+  const days = [...new Set(e.schedule.map((s: any) => s.day || 'Schedule'))];
+  const dayItems = e.schedule.filter((s: any) => (s.day || 'Schedule') === days[activeDay]);
+
   return (
     <>
       <section className="relative h-[320px] overflow-hidden sm:h-[380px]">
-        <Cover hue={e.hue} type={e.type} label={e.title} />
+        <Cover hue={e.hue} type={e.type} label={e.title} image={e.image} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1280px] px-4 pb-10 sm:px-8">
-          <Link to="/events" className="mb-4 inline-flex items-center gap-1 text-sm text-ice/70 hover:text-white"><ArrowLeft className="h-4 w-4" />All events</Link>
-          <div className="flex gap-2"><Badge tone="cyan">{e.type}</Badge>{e.status === 'Archived' && <Badge>Archived</Badge>}{!upcoming && <Badge>Past event</Badge>}</div>
+          <Link to="/events" className="mb-4 inline-flex items-center gap-1 text-sm text-ice/70 hover:text-white">
+            <ArrowLeft className="h-4 w-4" />All events
+          </Link>
+          <div className="flex gap-2">
+            <Badge tone="cyan">{e.type}</Badge>
+            {e.status === 'Archived' && <Badge>Archived</Badge>}
+            {!upcoming && <Badge>Past event</Badge>}
+          </div>
           <h1 className="h-display text-glow mt-3 text-4xl sm:text-6xl">{e.title}</h1>
         </div>
       </section>
+
       <section className="mx-auto grid max-w-[1280px] gap-8 px-4 py-12 sm:px-8 lg:grid-cols-[1.6fr_1fr]">
         <div>
           <p className="text-lg leading-relaxed text-ice/75">{e.description}</p>
-          <h2 className="mt-10 font-display text-2xl font-semibold">Schedule</h2>
-          <ol className="mt-4 space-y-3 border-l border-cyan/30 pl-6">
-            {e.schedule.map((s, i) => (
-              <li key={i} className="relative"><span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-cyan shadow-glow" />
-                <p className="text-xs font-semibold uppercase tracking-wider text-cyan">{s.time}</p><p className="text-ice/80">{s.item}</p></li>
+
+          <h2 className="mt-10 font-display text-2xl font-semibold">Syllabus</h2>
+
+          {/* Day buttons */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            {days.map((d, i) => (
+              <button
+                key={d}
+                onClick={() => setActiveDay(i)}
+                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
+                  activeDay === i
+                    ? 'bg-cyan text-navy-950'
+                    : 'bg-white/10 text-ice/70 hover:bg-white/15'
+                }`}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
+
+          {/* Selected day timetable */}
+          <ol className="mt-5 space-y-3 border-l border-cyan/30 pl-6">
+            {dayItems.map((s, i) => (
+              <li key={i} className="relative">
+                <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-cyan shadow-glow" />
+                <p className="text-xs font-semibold uppercase tracking-wider text-cyan">{s.time}</p>
+                <p className="text-ice/80">{s.item}</p>
+              </li>
             ))}
           </ol>
-          {photos.length > 0 && <>
-            <h2 className="mt-10 font-display text-2xl font-semibold">Photos</h2>
-            <div className="mt-4 grid grid-cols-2 gap-3">{photos.map(g => <div key={g.id} className="h-36 overflow-hidden rounded-xl"><Cover hue={g.hue} image={g.image} label={g.title} /></div>)}</div>
-          </>}
+
+          {photos.length > 0 && (
+            <>
+              <h2 className="mt-10 font-display text-2xl font-semibold">Photos</h2>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {photos.map(g => (
+                  <div key={g.id} className="h-36 overflow-hidden rounded-xl">
+                    <Cover hue={g.hue} image={g.image} label={g.title} />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
+
         <aside className="card h-fit space-y-4 p-6 lg:sticky lg:top-28">
-          <p className="flex items-center gap-2 text-sm"><CalendarDays className="h-4 w-4 text-cyan" />{fmtDate(e.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</p>
-          <p className="flex items-center gap-2 text-sm"><Clock className="h-4 w-4 text-cyan" />{e.time}</p>
-          <p className="flex items-center gap-2 text-sm"><MapPin className="h-4 w-4 text-cyan" />{e.venue}</p>
+          <p className="flex items-center gap-2 text-sm">
+            <CalendarDays className="h-4 w-4 text-cyan" />
+            {fmtDate(e.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+          </p>
+          <p className="flex items-center gap-2 text-sm">
+            <Clock className="h-4 w-4 text-cyan" />
+            {e.time}
+          </p>
+          <p className="flex items-center gap-2 text-sm">
+            <MapPin className="h-4 w-4 text-cyan" />
+            {e.venue}
+          </p>
           <div>
-            <p className="mb-2 flex items-center gap-2 text-sm"><Users className="h-4 w-4 text-cyan" />{e.registered} / {e.capacity} registered</p>
+            <p className="mb-2 flex items-center gap-2 text-sm">
+              <Users className="h-4 w-4 text-cyan" />
+              {e.registered} / {e.capacity} registered
+            </p>
             <Progress value={(e.registered / e.capacity) * 100} />
           </div>
-          {upcoming && e.registrationUrl
-            ? <a href={e.registrationUrl} className="btn btn-gradient w-full">Register now <ArrowUpRight className="h-4 w-4" /></a>
-            : <p className="rounded-lg bg-white/5 p-3 text-center text-sm text-ice/50">Registration closed</p>}
+          {upcoming && e.registrationUrl ? (
+            <a href={e.registrationUrl} className="btn btn-gradient w-full">
+              Register now <ArrowUpRight className="h-4 w-4" />
+            </a>
+          ) : (
+            <p className="rounded-lg bg-white/5 p-3 text-center text-sm text-ice/50">Registration closed</p>
+          )}
           <p className="text-[11px] text-ice/40">Demo: registration links point to the sample join form.</p>
         </aside>
       </section>

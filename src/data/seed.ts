@@ -24,16 +24,29 @@ export function buildSeed(): DemoState {
   ];
 
   const executives = [
-    { id: 'e-admin', name: 'Rakib Hasan', email: 'admin@club.demo', password: 'Admin123!', designation: 'Technical Advisor & Platform Admin', bio: 'Final-year CSE student who maintains the club platform and mentors the web team. Loves clean architecture and strong coffee.', roleIds: ['r-super'], department: 'CSE', batch: '2022', phone: '+880 1700-000001', hue: 205, order: 9, showOnSite: true },
-    { id: 'e-pres', name: 'Nusrat Jahan', email: 'president@club.demo', password: 'President123!', designation: 'President', bio: 'ICPC regionalist and two-time IUPC finalist. Focused on growing a welcoming, competitive coding culture on campus.', roleIds: ['r-pres'], department: 'CSE', batch: '2022', phone: '+880 1700-000002', hue: 45, order: 1, showOnSite: true },
-    { id: 'e-mod', name: 'Tanvir Ahmed', email: 'moderator@club.demo', password: 'Moderator123!', designation: 'Moderator & Task Coordinator', bio: 'Keeps the committee shipping on time. Runs weekly stand-ups and the club task board.', roleIds: ['r-mod'], department: 'SWE', batch: '2023', phone: '+880 1700-000003', hue: 190, order: 4, showOnSite: true },
-    { id: 'e-gs', name: 'Farhana Akter', email: 'gs@club.demo', password: 'GS123456!', designation: 'General Secretary', bio: 'Organised, calm and precise. Owns meeting minutes, official correspondence and the club archive.', roleIds: ['r-gs'], department: 'CSE', batch: '2023', phone: '+880 1700-000004', hue: 265, order: 2, showOnSite: true },
-    { id: 'e-tre', name: 'Mahmudul Karim', email: 'treasurer@club.demo', password: 'Treasurer123!', designation: 'Treasurer', bio: 'Tracks every taka. Built the club’s first budget-vs-actual report and sponsorship tracker.', roleIds: ['r-tre'], department: 'EEE', batch: '2022', phone: '+880 1700-000005', hue: 140, order: 3, showOnSite: true },
-    { id: 'e-evt', name: 'Sadia Rahman', email: 'events@club.demo', password: 'Events123!', designation: 'Event Coordinator', bio: 'Turns ideas into packed rooms — workshops, hackathons and the annual coding fiesta.', roleIds: ['r-evt'], department: 'CSE', batch: '2024', phone: '+880 1700-000006', hue: 25, order: 5, showOnSite: true },
-    { id: 'e-lead', name: 'Arif Hossain', email: 'lead@club.demo', password: 'Lead123456!', designation: 'Competition & Project Lead', bio: 'Codeforces Expert. Coaches contest teams and leads the club’s open-source projects.', roleIds: ['r-lead'], department: 'CSE', batch: '2023', phone: '+880 1700-000007', hue: 320, order: 6, showOnSite: true },
-    { id: 'e-exec', name: 'Imran Chowdhury', email: 'executive@club.demo', password: 'Executive123!', designation: 'Executive Member', bio: 'Frontend enthusiast helping with design, social media and workshop logistics.', roleIds: ['r-exec'], department: 'SWE', batch: '2024', phone: '+880 1700-000008', hue: 230, order: 7, showOnSite: true },
-    { id: 'e-tasnim', name: 'Tasnim Islam', email: 'tasnim@club.demo', designation: 'Executive Member', bio: 'Assists the events team with registrations, venues and volunteers.', roleIds: ['r-exec', 'r-evt'], department: 'CSE', batch: '2024', phone: '+880 1700-000009', hue: 350, order: 8, showOnSite: true },
-    { id: 'e-shafin', name: 'Shafin Alam', email: 'shafin@club.demo', designation: 'Executive Member', bio: 'Problem setter for intra-university contests. Writes editorials and test data.', roleIds: ['r-exec'], department: 'CSE', batch: '2024', phone: '+880 1700-000010', hue: 170, order: 10, showOnSite: true },
+
+    { id: 'e-mod', name: 'Arko Sikder',term: '2026-2027',photo:'/public/Arko Sir1.jpeg',  designation: 'Moderator', bio: '🔹 Codeforces Expert with a max rating of 1621 🔹 3-time National BdMO Medalist 🔹 Multiple Top 10 Positions in IUPCs 🔹 Dean’s List Recipient', roleIds: ['r-mod'], phone: '+880 1700-000002', hue: 45, order: 1, showOnSite: true },
+    { id: 'e-co-mod', name: 'Ahmmad Nur Swapnil',term:'2026-2027',photo:'/public/Sopnil Sir.jpg',  designation: 'Co-Moderator', bio: '🔹 ICPC Asia Regional Dhaka Participant 🔹Expert in Codeforces 🔹 Dean’s List 1st Runner-Up, 🔹Eco-Tech Hackathon 2026 ', roleIds: ['r-gs'], hue: 265, order: 2, showOnSite: true },
+    { id: 'e-co-moda', name: 'Md. Owaliur Rahman',term:'2026-2027',photo:'/public/fihad sir1.jpg',  designation: 'Co-Moderator', bio: '🔹 Specialist (Max Rating: 1535) on Codeforces 🔹Honorable Mention, ICPC Asia Dhaka Regional Onsite Contest 2025 🔹 Rank 29, ICPC Asia Dhaka Regional Preliminary Contest 2025 ', roleIds: ['r-gs'], hue: 265, order: 2, showOnSite: true },
+    { id: 'e-pres', name: 'Shakhaoath Hossain Pappu',term:'2026-2027',photo:'/public/Shakhaoath Hossain Paapu.jpeg',  designation: 'President', roleIds: ['r-pres'],department: 'CSE', batch: '231', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-vp', name: 'Mohima Akter',term:'2026-2027',photo:'/public/Mohima Akter.jpeg',  designation: 'Vice-President', roleIds: ['r-vp'],department: 'CSE', batch: '231', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-gs', name: 'Ifat Khalil Fahim',term:'2026-2027',photo:'/public/Ifat Khalil Fahim.jpeg',  designation: 'General Secretary', roleIds: ['r-gs'],department: 'CSE', batch: '242', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-tres', name: 'Alok Chandra Sutradhar',term:'2026-2027',photo:'/public/Alok Chandra Sutradhar.jpeg',  designation: 'Treasurer', roleIds: ['r-treas'],department: 'CSE', batch: '251', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-social', name: 'Rafiul Haque Rafi',term:'2026-2027',photo:'/public/Rafiul Haque Rafi.jpeg',  designation: 'TMedia & Communication Secretary', roleIds: ['r-media'],department: 'CSE', batch: '251', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-mangement', name: 'Md Rakibul Islam',term:'2026-2027',photo:'/public/Rakibul Hasan.jpeg',  designation: 'Management Secretary', roleIds: ['r-manage'],department: 'CSE', batch: '242', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-technical', name: 'Rahat Rahman Rumi',term:'2026-2027',photo:'/public/Rahat Rumi.jpeg',  designation: 'Technical Director', roleIds: ['r-tech'],department: 'CSE', batch: '253', hue: 265, order: 4, showOnSite: true },
+    { id: 'e-organize', name: 'Tanvir Mahmud Mahi',term:'2026-2027',photo:'',  designation: 'Organizing Secretary', roleIds: ['r-organize'],department: 'CSE', batch: '251', hue: 265, order: 4, showOnSite: true },
+    { id: 'public-real', name: 'Md Hasan Ali',term:'2026-2027',photo:'/public/Hasan.jpeg',  designation: 'Public Relations Secretary', roleIds: ['r-publicrel'],department: 'CSE', batch: '251', hue: 265, order: 4, showOnSite: true },
+    { id: 'public-event', name: 'Md. Abidullah',term:'2026-2027',photo:'/public/Abid.jpg',  designation: 'Event Secretary', roleIds: ['r-event'],department: 'CSE', batch: '251', hue: 265, order: 4, showOnSite: true },
+
+
+    { id: 'ager-presi', name: '404',term:'2024-2025',photo:'',  designation: '404', roleIds: ['r-nothing'], hue: 265, order: 4, showOnSite: true },
+
+
+
+
+
+
   ];
 
   const first = ['Ayesha', 'Fahim', 'Mehedi', 'Sumaiya', 'Rafi', 'Nadia', 'Sabbir', 'Jannat', 'Tahmid', 'Raisa', 'Zubair', 'Lamia', 'Nafis', 'Priya', 'Asif', 'Mim', 'Hasib', 'Tania', 'Rehan', 'Orin', 'Sakib', 'Faria', 'Yasin', 'Anika'];
@@ -71,22 +84,30 @@ export function buildSeed(): DemoState {
   members.push({ id: 'PUPC-2025-101', name: 'Faisal Mahmud', studentId: '25101555', email: 'faisal.m@student.demo', phone: '+880 1911-200305', department: 'CSE', batch: '2025', interests: ['Competitive Programming'], status: 'Active', joinedAt: day(-10) });
 
   const events = [
-    { id: 'ev-code-sprint-1.0', title: 'PUPC CodeSprint 1.0 - A pathway to competitive programming', type: 'Workshop' as const, date: day(3), time: '10:00 AM', venue: 'Lab 115 (Ground Floor)', summary: 'The workshop will focus on essential programming concepts, problem-solving techniques, and commonly used tools required to begin a structured journey in Competitive Programming.', description: 'PUPC CodeSprint 1.0 is a six-day introductory workshop designed to help students build a strong foundation in Competitive Programming. The workshop will focus on essential programming concepts, problem-solving techniques, and commonly used tools required to begin a structured journey in Competitive Programming.', schedule: [{ time: '9:30 AM', item: 'Reporting time' }, { time: '10:00 AM', item: 'Class starting time' }, { time: '11:30 AM', item: 'Snacks break' }, { time: '2:00 PM', item: 'Q&A and conclusion' }], status: 'Published' as const, registrationUrl: 'https://forms.gle/LF4wRPN8rQhQHeB6A', hue: 200, capacity: 30, registered: 10, featured: true },
-    { id: 'ev-git', title: 'ICPC Preliminary Contest 2026', type: 'Contest' as const, date: day(5), time: 'TBA', venue: 'TBA', summary: 'Presidency University is organizing an internal registration process for students interested in participating in the ICPC 2026 Asia Dhaka Regional Contest Preliminary Contest.', description: 'Presidency University is organizing an internal registration process for students interested in participating in the ICPC 2026 Asia Dhaka Regional Contest Preliminary Contest.', schedule: [{ time: 'TBA', item: 'TBA' }], status: 'Published' as const, registrationUrl: 'https://forms.gle/zoSrjzGRFtv2AGrFA', hue: 260, capacity: 30, registered: 5, featured: true },
-    { id: 'ev-iupc', title: 'Intra-University Programming Contest 2026', type: 'Contest' as const, date: day(-15), time: '9:00 AM', venue: 'Central Computer Lab', summary: 'The flagship 5-hour ICPC-style team contest. Teams of three, 10–12 problems.', description: 'Our flagship contest for all departments. ICPC rules, teams of three, one computer per team. Prizes for the top three teams and best freshers team. Problem set by club alumni and executive problem setters.', schedule: [{ time: '9:00 AM', item: 'Reporting & system check' }, { time: '10:00 AM', item: 'Contest starts' }, { time: '3:00 PM', item: 'Contest ends' }, { time: '4:00 PM', item: 'Prize giving & editorial' }], status: 'Published' as const, registrationUrl: 'https://forms.gle/9unPY3U6CxF7BbZb7', hue: 190, capacity: 150, registered: 112, featured: true },
-    { id: 'ev-react', title: 'Modern Web with React', type: 'Workshop' as const, date: day(-22), time: '2:30 PM', venue: 'Lab 305', summary: 'Components, state and deploying your first React app in an afternoon.', description: 'Hands-on React workshop covering components, props, state, hooks and deployment.', schedule: [{ time: '2:30 PM', item: 'React mental model' }, { time: '3:30 PM', item: 'Build a mini app' }, { time: '5:00 PM', item: 'Deploy' }], status: 'Draft' as const, registrationUrl: 'https://forms.gle/9unPY3U6CxF7BbZb7', hue: 220, capacity: 60, registered: 0, featured: false },
-    { id: 'ev-hack', title: 'Hack the Campus 2026', type: 'Hackathon' as const, date: day(-34), time: '9:00 AM', venue: 'Innovation Hub', summary: '24 hours, teams of four, real campus problems — build, pitch and win.', description: 'A 24-hour hackathon focused on solving real problems on campus: transport, canteen queues, library access and more. Mentors from industry, food all night, and prizes for the top teams.', schedule: [{ time: 'Day 1 · 9:00 AM', item: 'Opening & problem statements' }, { time: 'Day 1 · 10:00 AM', item: 'Hacking begins' }, { time: 'Day 2 · 10:00 AM', item: 'Submissions close' }, { time: 'Day 2 · 12:00 PM', item: 'Pitches & awards' }], status: 'Published' as const, registrationUrl: 'https://forms.gle/9unPY3U6CxF7BbZb7', hue: 280, capacity: 120, registered: 58, featured: true },
-    { id: 'ev-fiesta', title: "Freshers' Coding Fiesta", type: 'Contest' as const, date: day(-25), time: '11:00 AM', venue: 'Central Computer Lab', summary: 'A friendly 3-hour individual contest for first-year students.', description: 'Over 140 freshers competed in our most popular beginner contest.', schedule: [{ time: '11:00 AM', item: 'Contest' }, { time: '2:30 PM', item: 'Awards' }], status: 'Published' as const, registrationUrl: '', hue: 170, capacity: 160, registered: 143, featured: false },
-    { id: 'ev-ai', title: 'Tech Talk: Building with AI', type: 'Seminar' as const, date: day(-48), time: '4:00 PM', venue: 'Auditorium', summary: 'Alumni engineers on shipping AI features responsibly.', description: 'A panel of alumni engineers discussed practical AI product work.', schedule: [{ time: '4:00 PM', item: 'Panel' }, { time: '5:15 PM', item: 'Networking' }], status: 'Published' as const, registrationUrl: '', hue: 300, capacity: 250, registered: 231, featured: false },
-    { id: 'ev-summer', title: 'Summer Hackathon 2026', type: 'Hackathon' as const, date: day(-95), time: '9:00 AM', venue: 'Innovation Hub', summary: '18 teams built tools for local NGOs.', description: 'Eighteen teams built tools for partner NGOs over 24 hours.', schedule: [{ time: '9:00 AM', item: 'Opening' }], status: 'Archived' as const, registrationUrl: '', hue: 330, capacity: 100, registered: 74, featured: false },
+    { id: 'ev-code-sprint-1.0', 
+      title: 'PUPC CodeSprint 1.0 - A Pathway To Competitive Programming', type: 'Workshop' as const, date: day(3), time: '10:00 AM', venue: 'Lab 115 (Ground Floor)', summary: 'The workshop will focus on essential programming concepts, problem-solving techniques, and commonly used tools required to begin a structured journey in Competitive Programming.', description: 'PUPC CodeSprint 1.0 is a six-day (13-15 and 17-19 October ) introductory workshop designed to help students build a strong foundation in Competitive Programming. The workshop will focus on essential programming concepts, problem-solving techniques, and commonly used tools required to begin a structured journey in Competitive Programming.', 
+      schedule: [
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 1 · 13 Oct' }, { time: '10:00 AM', item: 'Class start — C++ Basic 1', day: 'Day 1 · 13 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 1 · 13 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 1 · 13 Oct'},
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 2 · 14 Oct' }, { time: '10:00 AM', item: 'Class start — C++ Basic 2', day: 'Day 2 · 14 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 2 · 14 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 2 · 14 Oct'},
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 3 · 15 Oct' }, { time: '10:00 AM', item: 'Class start — Problem Solving Basics', day: 'Day 3 · 15 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 3 · 15 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 3 · 15 Oct'},
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 4 · 17 Oct' }, { time: '10:00 AM', item: 'Class start — Greedy', day: 'Day 4 · 17 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 4 · 17 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 4 · 17 Oct'},
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 5 · 18 Oct' }, { time: '10:00 AM', item: 'Class start — Math And Geometry', day: 'Day 5 · 18 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 5 · 18 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 5 · 18 Oct'},
+        { time: '9:30 AM', item: 'Reporting time', day: 'Day 6 · 19 Oct' }, { time: '10:00 AM', item: 'Class start — STL', day: 'Day 6 · 19 Oct' }, { time: '11:30 AM', item: 'Snacks break',day: 'Day 6 · 19 Oct' }, { time: '2:00 PM', item: 'Q&A and conclusion',day: 'Day 6 · 19 Oct'}
+
+      ], status: 'Published' as const, registrationUrl: 'https://forms.gle/LF4wRPN8rQhQHeB6A', image:'/public/codesprint cover.jpg', hue: 200, capacity: 30, registered: 10, featured: true },
+
+    { id: 'ev-git', title: 'ICPC Preliminary Contest 2026', type: 'Contest' as const, date: day(5), time: 'TBA', venue: 'TBA', summary: 'Presidency University is organizing an internal registration process for students interested in participating in the ICPC 2026 Asia Dhaka Regional Contest Preliminary Contest.', description: 'Presidency University is organizing an internal registration process for students interested in participating in the ICPC 2026 Asia Dhaka Regional Contest Preliminary Contest.', schedule: [{ time: 'TBA', item: 'TBA' }], status: 'Published' as const, registrationUrl: 'https://forms.gle/zoSrjzGRFtv2AGrFA', image:'/public/icpc cover.jpg', hue: 260, capacity: 30, registered: 5, featured: true },
+    { id: 'ev-web', title: '6 Day Web Development Workshop', type: 'Workshop' as const, date: day(-81), time: '10:00 AM', venue: 'Lab 115', summary: 'Full-stack web development fundamentals, from fronted and backedn to databases and deploying you first web application.', description: 'A 6-day intensive workshop covering the fundamentals of full-stack web development, from building interactive user interfaces to developing backend systems and managing databases . Gain hands-on experience by building and delopying a complete web application using modern web terchnologies.', schedule: [{ time: '9:30 -10:00 AM', item: 'Reporting Time And Opening' }, { time: '11:00 AM', item: 'Snacks' }, { time: '12:00 AM', item: 'QA and Closing'  }], status: 'Published' as const, registrationUrl: 'https://forms.gle/9unPY3U6CxF7BbZb7', image:'/public/web-workshop.jpg', hue: 280, capacity: 30, registered: 35, featured: true },
+    { id: 'ev-ai', title: 'Bybeat Junior Programming Contest 2026 ', type: 'Contest' as const, date: day(-147), time: '10:00 - 12:30 PM', venue: '115 , 501 , 502 Lab', summary: 'A competitive programming contest to challenge your coding skills, logical thinking, and problem-solving abilities in the AI era.', description: 'Open to batches 251, 252, 253, 261, and 262, featuring a hands-on competitive programming experience with medals and certificates for the top 2 programmers from each batch.', schedule: [{ time: '9:30 AM', item: 'Reporting Time' }, { time: '10:00 AM', item: 'Contest Start' }], status: 'Published' as const, registrationUrl: '',image:'/public/byte-beat.jpg', hue: 300, capacity: 70, registered: 60, featured: true },
+    { id: 'ev-summer', title: 'Intra University Programming Contest', type: 'Contest' as const, date: day(-315), time: '10:00 -12:00 PM', venue: '115 , 501 , 502 Lab', summary: 'An intra-university programming contest at PU CSE Fest 2025, designed to challenge coding skills, algorithmic thinking, and problem-solving abilities.', description: 'Compete with fellow students in coding challenges that test algorithmic thinking and problem-solving. Showcase your programming skills and gain competitive programming experience.', schedule: [{ time: '9:30 AM', item: 'Reporting Time' }, { time: '10:00 AM', item: 'Contest Start' }], status: 'Published' as const, registrationUrl: '', image:'/public/intra-uni.jpg', hue: 300, capacity: 70, registered: 60, featured: true },
   ];
 
   const gallery = [
-    { id: 'g-1', title: 'Fiesta winners on stage', eventId: 'ev-fiesta', hue: 170, at: day(-25) },
-    { id: 'g-2', title: 'Late-night debugging', eventId: 'ev-summer', hue: 330, at: day(-95) },
-    { id: 'g-3', title: 'Alumni panel Q&A', eventId: 'ev-ai', hue: 300, at: day(-48) },
-    { id: 'g-4', title: 'Problem setters at work', eventId: 'ev-fiesta', hue: 200, at: day(-26) },
-    { id: 'g-5', title: 'Team photo — ICPC prep camp', hue: 240, at: day(-60) },
+    { id: 'g-1', title: 'Bangladesh Innovation Fair 2026', eventId: 'ev-fiesta', image:'/public/Innovation Fair.jpeg', hue: 170, at: day(-25) },
+    { id: 'g-2', title: 'Bybeat Junior Programming Contest', eventId: 'ev-summer',image:'/public/beatbeat.jpg', hue: 330, at: day(-95) },
+    { id: 'g-3', title: 'Icpc Dhaka Asia Regional Participation',image:'/public/icpc.jpg', eventId: 'ev-ai', hue: 300, at: day(-48) },
+    { id: 'g-4', title: 'Web Development Workshop', eventId: 'ev-fiesta',image:'/public/web-development.jpg', hue: 200, at: day(-26) },
+    { id: 'g-5', title: 'National Competiton',image:'/public/Project Showcase In Shanta Morium.jpg', hue: 240, at: day(-60) },
     { id: 'g-6', title: 'Hackathon pitch round', eventId: 'ev-summer', hue: 20, at: day(-94) },
   ];
 
@@ -227,7 +248,7 @@ export function buildSeed(): DemoState {
   ];
 
   return {
-    version: 1,
+    version:2,
     club: {
       name: 'Presidency University Programming Club',
       short: 'PUPC',
@@ -239,14 +260,13 @@ export function buildSeed(): DemoState {
       vision: 'A campus where every student can turn ideas into working software and compete confidently at national and international level.',
       history: 'Founded in 2016 by eight CSE students who met at a late-night contest, the club has grown to over 400 members. Our teams have reached the ICPC Dhaka Regional every year since 2019, and our annual hackathon now draws participants from across the country.',
       goals: ['Run weekly practice sessions for competitive programmers', 'Host at least 8 workshops every semester', 'Send 3+ teams to ICPC regionals', 'Ship one open-source project per year', 'Mentor first-year students into confident developers'],
-      email: 'pupc@club.demo',
-      phone: '+880 1700-000000',
-      address: 'Presidency University, Dhaka, Bangladesh',
+      email: 'pupc@pu.edu.bd',
+      phone: '',
+      address: 'Presidency University, Gulshan 2, Dhaka, Bangladesh',
       socials: [
-        { label: 'Facebook', url: 'https://facebook.com/' },
-        { label: 'GitHub', url: 'https://github.com/' },
-        { label: 'LinkedIn', url: 'https://linkedin.com/' },
-        { label: 'YouTube', url: 'https://youtube.com/' },
+        { label: 'Discord', url: 'https://discord.gg/sKRpJBPu2' },
+        { label: 'Facebook Group', url: 'https://www.facebook.com/groups/1409815747599534' },
+        { label: 'Facebook Page', url: 'https://www.facebook.com/profile.php?id=61555818638807' },
       ],
     },
     roles, executives, members, applications, tasks, events, gallery, transactions, budgets, reimbursements,

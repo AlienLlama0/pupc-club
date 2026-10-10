@@ -4,7 +4,7 @@ import { ArrowUpRight, Menu, X, FlaskConical } from 'lucide-react';
 import { useDemo } from '../store/DemoStore';
 
 const LINKS = [
-  { to: '/about', label: 'About' },
+  
   { to: '/events', label: 'Events' },
   { to: '/executives', label: 'Executives' },
   { to: '/verify', label: 'PUPC ID' },
@@ -16,7 +16,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-2.5" aria-label={`${state.club.name} home`}>
       <span className="font-display text-[28px] font-extrabold italic leading-none tracking-tight text-white sm:text-[34px]">{state.club.short}</span>
-      {!compact && <span className="border-[1.5px] border-white px-1.5 py-[1px] font-display text-[11px] font-bold text-white sm:text-xs">{state.club.year}</span>}
+      
     </Link>
   );
 }

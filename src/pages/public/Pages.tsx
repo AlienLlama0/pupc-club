@@ -45,15 +45,49 @@ export function About() {
 
 export function Executives() {
   const { state } = useDemo();
-  const list = state.executives.filter(e => e.showOnSite).sort((a, b) => a.order - b.order);
+  const all = state.executives.filter(e => e.showOnSite);
+
+  const terms = [...new Set(all.map((e: any) => e.term || '2026-2027'))];
+  const [activeTerm, setActiveTerm] = useState(terms[0] || '2026-2027');
+
+  const list = all
+    .filter((e: any) => (e.term || '2026-2027') === activeTerm)
+    .sort((a, b) => a.order - b.order);
+
   return (
     <>
-      <PageHero eyebrow="Executive panel" title="Meet the Committee" sub="The students who plan the contests, run the workshops and keep the club shipping." />
+      <PageHero
+        eyebrow="Executive panel"
+        title="Meet the Committee"
+        sub="The students who plan the contests, run the workshops and keep the club shipping."
+      />
       <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-8">
+
+        {/* Year buttons — syllabus এর Day বাটনের মতো */}
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
+          {terms.map(t => (
+            <button
+              key={t}
+              onClick={() => setActiveTerm(t)}
+              className={`rounded-lg px-5 py-2 text-sm font-semibold transition ${
+                activeTerm === t
+                  ? 'bg-cyan text-navy-950'
+                  : 'bg-white/10 text-ice/70 hover:bg-white/15'
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {list.map(e => (
             <article key={e.id} className="card group p-6 text-center transition hover:-translate-y-1 hover:border-cyan/40">
-              <div className="mx-auto w-fit rounded-full bg-gradient-to-br from-[#ff5a5f] to-[#c4142f] p-[3px]"><div className="rounded-full bg-navy-900 p-1"><Avatar name={e.name} hue={e.hue} photo={e.photo} size={96} /></div></div>
+              <div className="mx-auto w-fit rounded-full bg-gradient-to-br from-[#ff5a5f] to-[#c4142f] p-[3px]">
+                <div className="rounded-full bg-navy-900 p-1">
+                  <Avatar name={e.name} hue={e.hue} photo={(e as any).photo} size={96} />
+                </div>
+              </div>
               <h2 className="mt-4 font-display text-xl font-semibold">{e.name}</h2>
               <p className="text-sm font-semibold text-cyan">{e.designation}</p>
               <p className="mt-1 text-xs text-ice/40">{e.department} · Batch {e.batch}</p>
@@ -61,7 +95,11 @@ export function Executives() {
             </article>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs text-ice/40">Profiles are sample data — editable from Dashboard → Executives (GS, President or Super Admin).</p>
+
+        {list.length === 0 && (
+          <p className="mt-10 text-center text-ice/50">No executives for this term yet.</p>
+        )}
+
       </section>
     </>
   );
