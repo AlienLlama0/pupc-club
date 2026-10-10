@@ -7,8 +7,6 @@ import {
   ShieldAlert,
   BadgeCheck,
   SearchX,
-  ChevronDown,
-  Check,
 } from "lucide-react";
 
 type SearchBy = "student_id" | "email" | "phone_number";
