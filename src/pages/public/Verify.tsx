@@ -11,11 +11,11 @@ import {
 
 type SearchBy = "student_id" | "email" | "phone_number";
 
-const placeholders: Record<SearchBy, string> = {
-  student_id: "Enter student ID",
-  email: "Enter email address",
-  phone_number: "Enter phone number",
-};
+// const placeholders: Record<SearchBy, string> = {
+//   student_id: "Enter student ID",
+//   email: "Enter email address",
+//   phone_number: "Enter phone number",
+// };
 
 
 type MemberResult =
