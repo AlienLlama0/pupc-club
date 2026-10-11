@@ -178,7 +178,6 @@ export function EventDetail() {
           ) : (
             <p className="rounded-lg bg-white/5 p-3 text-center text-sm text-ice/50">Registration closed</p>
           )}
-          <p className="text-[11px] text-ice/40">Demo: registration links point to the sample join form.</p>
         </aside>
       </section>
     </>
